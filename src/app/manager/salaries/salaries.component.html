@@ -1,0 +1,26 @@
+<table class="flatTable">
+    <tr class="titleTr">
+      <td class="titleTd">SALARIES</td>
+      <td colspan="4"></td>
+      <td class="plusTd button" (click)="open()"></td>
+    </tr>
+    <tr class="headingTr">
+      <td>ID</td>
+      <td>DATE</td>
+      <td>BONUS</td>
+      <td>STATUS</td>
+      <td>TOTAL</td>
+      <td></td>
+    </tr>
+    
+    <tr *ngFor="let salary of salaries">
+      <td> {{salary.id}} </td>
+      <td> {{salary.date}} </td>
+      <td> {{salary.bonus}} </td>
+      <td> {{salary.status}} </td>
+      <td> {{salary.taxTotal}} </td>
+      <td class="controlTd"(click)="settingsOpen()">
+      </td> 
+    </tr>
+  
+  </table>

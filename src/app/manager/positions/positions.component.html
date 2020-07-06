@@ -1,0 +1,24 @@
+<table class="flatTable">
+    <tr class="titleTr">
+      <td class="titleTd">POSITIONS</td>
+      <td colspan="4"></td>
+      <td class="plusTd button" (click)="open()"></td>
+    </tr>
+    <tr class="headingTr">
+      <td>ID</td>
+      <td>NAME</td>
+      <td>DESCRIPTION</td>
+      <td>BASE</td>
+      <td></td>
+    </tr>
+    
+    <tr *ngFor="let position of positions">
+      <td> {{position.id}} </td>
+      <td> {{position.name}} </td>
+      <td> {{position.description}} </td>
+      <td> {{position.base}} </td>
+      <td class="controlTd"(click)="settingsOpen()">
+      </td> 
+    </tr>
+  
+  </table>

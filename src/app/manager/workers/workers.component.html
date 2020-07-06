@@ -1,0 +1,24 @@
+<table class="flatTable">
+    <tr class="titleTr">
+      <td class="titleTd">WORKERS</td>
+      <td colspan="4"></td>
+      <td class="plusTd button" (click)="open()"></td>
+    </tr>
+    <tr class="headingTr">
+      <td>ID</td>
+      <td>FIRST NAME</td>
+      <td>LAST NAME</td>
+      <td>POSITIONS</td>
+      <td></td>
+    </tr>
+    
+    <tr *ngFor="let worker of workers">
+      <td> {{worker.id}} </td>
+      <td> {{worker.firstName}} </td>
+      <td> {{worker.lastName}} </td>
+      <td> {{worker.positionIds}} </td>
+      <td class="controlTd"(click)="settingsOpen()">
+      </td> 
+    </tr>
+  
+  </table>
