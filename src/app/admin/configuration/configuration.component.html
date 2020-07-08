@@ -21,4 +21,6 @@
       </td> 
     </tr>
   
-  </table>
+</table>
+
+<app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>

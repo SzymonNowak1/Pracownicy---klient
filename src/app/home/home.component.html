@@ -12,12 +12,13 @@
             <a *ngIf="manager" routerLink="/positions"> Stanowiska</a>
             <a *ngIf="user" routerLink="/manage"> Zespoly</a>
             <a *ngIf="manager" routerLink="/manage"> Zarzadzanie zepolami</a>
-            <a *ngIf="user" routerLink="/manage"> Moje wypłaty</a>
+            <a *ngIf="user" routerLink="/mysalaries"> Moje wypłaty</a>
             <a *ngIf="manager" routerLink="/salaries"> Zarzadznie wypłatami</a>
             <a *ngIf="manager" routerLink="/manage"> Zaliczki</a>
             <a *ngIf="user" routerLink="/manage"> Mój pit</a>
             <a *ngIf="manager" routerLink="/manage"> Wygeneruj pit</a>
             <a *ngIf="user" routerLink="/manage"> Moje urlopy</a>
+            <a *ngIf="user" routerLink="/salarytargets">Cele wypłat</a>
             <a *ngIf="manager" routerLink="/manage"> Urlopy pracowników</a>
             <a href="#">Chat</a>
             <a href="#" (click)="logout()">Wyloguj </a>

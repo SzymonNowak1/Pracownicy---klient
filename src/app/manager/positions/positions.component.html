@@ -1,3 +1,4 @@
+
 <table class="flatTable">
     <tr class="titleTr">
       <td class="titleTd">POSITIONS</td>
@@ -21,4 +22,6 @@
       </td> 
     </tr>
   
-  </table>
+</table>
+
+<app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>

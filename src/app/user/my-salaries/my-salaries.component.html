@@ -6,7 +6,6 @@
     </tr>
     <tr class="headingTr">
       <td>ID</td>
-      <td>WORKER ID</td>
       <td>DATE</td>
       <td>BONUS</td>
       <td>STATUS</td>
@@ -16,7 +15,6 @@
     
     <tr *ngFor="let salary of salaries">
       <td> {{salary.id}} </td>
-      <td> {{salary.workerId}} </td>
       <td> {{salary.date}} </td>
       <td> {{salary.bonus}} </td>
       <td> {{salary.status}} </td>
@@ -26,5 +24,3 @@
     </tr>
   
   </table>
-
-  <app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>

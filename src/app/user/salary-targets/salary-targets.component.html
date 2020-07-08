@@ -1,0 +1,24 @@
+<table class="flatTable">
+    <tr class="titleTr">
+      <td class="titleTd">SALARY TARGETS</td>
+      <td colspan="4"></td>
+      <td class="plusTd button" (click)="open()"></td>
+    </tr>
+    <tr class="headingTr">
+      <td>ID</td>
+      <td>NAME</td>
+      <td>BANK ACCOUNT</td>
+      <td>SELECTED</td>
+      <td></td>
+    </tr>
+    
+    <tr *ngFor="let salarytarget of salaryTargets">
+      <td> {{salarytarget.id}} </td>
+      <td> {{salarytarget.name}} </td>
+      <td> {{salarytarget.bankAccount}} </td>
+      <td> {{salarytarget.selected}} </td>
+      <td class="controlTd"(click)="settingsOpen()">
+      </td> 
+    </tr>
+  
+  </table>

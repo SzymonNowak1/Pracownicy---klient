@@ -4,7 +4,6 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/guard/auth-guard';
-import { ResourceComponent } from 'src/app/resource/resource.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { ConfigurationComponent } from './admin/configuration/configuration.component';
 import { UserWorkersComponent } from './admin/user-workers/user-workers.component';
@@ -15,6 +14,8 @@ import { MyInfoComponent } from './my-info/my-info.component';
 import { WorkersComponent } from './manager/workers/workers.component';
 import { PositionsComponent } from './manager/positions/positions.component';
 import { SalariesComponent } from './manager/salaries/salaries.component';
+import { MySalariesComponent } from './user/my-salaries/my-salaries.component';
+import { SalaryTargetsComponent } from './user/salary-targets/salary-targets.component';
 
 const routes: Routes = [
   { path: '', component: MoreInfoComponent },
@@ -25,9 +26,8 @@ const routes: Routes = [
 
   { path: 'myInfo', component: MyInfoComponent, canActivate: [UserGuard] },
   
-  { path: 'resource', component: ResourceComponent, canActivate: [UserGuard] },
-  
-  // { path: 'worker ', bla bla ManagerGuard}
+  { path: 'mysalaries', component: MySalariesComponent, canActivate: [UserGuard] },
+  { path: 'salarytargets', component: SalaryTargetsComponent, canActivate: [UserGuard] },
 
   { path: 'configuration', component: ConfigurationComponent, canActivate: [AdminGuard] },
   { path: 'userworkers', component: UserWorkersComponent, canActivate: [AdminGuard] },

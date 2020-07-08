@@ -10,7 +10,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './auth/http/token-interceptor';
 import { ErrorInterceptor } from './auth/http/error-interceptor';
 import { HomeComponent } from './home/home.component';
-import { ResourceComponent } from './resource/resource.component';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { ConfigurationComponent } from './admin/configuration/configuration.component';
 import { UserWorkersComponent } from './admin/user-workers/user-workers.component';
@@ -18,6 +17,9 @@ import { MyInfoComponent } from './my-info/my-info.component';
 import { WorkersComponent } from './manager/workers/workers.component';
 import { PositionsComponent } from './manager/positions/positions.component';
 import { SalariesComponent } from './manager/salaries/salaries.component';
+import { MySalariesComponent } from './user/my-salaries/my-salaries.component';
+import { SalaryTargetsComponent } from './user/salary-targets/salary-targets.component';
+import { PaginatorComponent } from './common/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +28,15 @@ import { SalariesComponent } from './manager/salaries/salaries.component';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ResourceComponent,
     ConfigurationComponent,
     UserWorkersComponent,
     MyInfoComponent,
     WorkersComponent,
     PositionsComponent,
-    SalariesComponent
+    SalariesComponent,
+    MySalariesComponent,
+    SalaryTargetsComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,

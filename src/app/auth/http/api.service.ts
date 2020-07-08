@@ -30,7 +30,7 @@ export const ENDPOINTS = {
     'API_SALARYTARGETS': `${apiUrl}/api/salarytargets`,
     'API_SALARYTARGETS_ID': `${apiUrl}/api/salarytargets/{id}`,
     'API_SALARYTARGETS_ID_SELECT': `${apiUrl}/api/salarytargets/{id}/select`,
-    'API_SALARYTARGETS_MYSALARIES': `${apiUrl}/api/salarytargets/mysalarytargets`,
+    'API_SALARYTARGETS_MYSALARYTARGETS': `${apiUrl}/api/salarytargets/mysalarytargets`,
 
     'API_USERWORKERS': `${apiUrl}/api/userworkers`,
     'API_USERWORKERS_SEARCHTEXT': `${apiUrl}/api/userworkers/searchtext`,
