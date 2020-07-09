@@ -17,10 +17,15 @@
       <td> {{conf.name}} </td>
       <td> {{conf.description}} </td>
       <td> {{conf.value}} </td>
-      <td class="controlTd"(click)="settingsOpen()">
+      <td class="controlTd" (click)="editValue(conf)">
       </td> 
     </tr>
   
 </table>
 
 <app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>
+
+<div *ngIf="currentEditedConfiguration">
+  <input [(ngModel)]="currentEditedConfiguration.value">
+  <button (click)="saveValue()"> Zapisz </button>
+</div>

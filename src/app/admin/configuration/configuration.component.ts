@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService, ENDPOINTS } from 'src/app/auth/http/api.service';
-import { Configuration, Page } from 'src/app/model/models';
+import { Configuration, Page, ConfigurationUpdate } from 'src/app/model/models';
 import { PageEvent } from '../../common/page-event';
 import { DEFAULT_PER_PAGE } from '../../const';
 
@@ -16,6 +16,8 @@ export class ConfigurationComponent implements OnInit {
   perPage = DEFAULT_PER_PAGE;
   page = 1;
   totalPages = 1;
+
+  currentEditedConfiguration: Configuration;
 
   configurations: Configuration[];
 
@@ -38,7 +40,21 @@ export class ConfigurationComponent implements OnInit {
     });
   }
 
-  settingsOpen(){}
+  putConfiguration(name: string, update: ConfigurationUpdate) {
+    this.api.put<Configuration>(ENDPOINTS.API_CONFIGURATION_NAME, { name: name }, update ).subscribe( response => {
+      console.log( response );
+      
+      this.currentEditedConfiguration = null;
+    });
+  }
+
+  editValue(conf: Configuration){
+    this.currentEditedConfiguration = conf;
+  }
+
+  saveValue() {
+    this.putConfiguration(this.currentEditedConfiguration.name, this.currentEditedConfiguration)
+  }
 
   open() {}
 }

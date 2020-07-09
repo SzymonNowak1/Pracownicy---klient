@@ -63,6 +63,18 @@ private bracketsRegExp = /{([^}]+)}/g;
         return this.http.post<T>(uri, body);
     }
 
+    put<T>(endpoint: string, queryParams?: any, body: any = {}) {
+        let uri = this.resolveUri( endpoint, queryParams );
+
+        return this.http.put<T>(uri, body);
+    }
+
+    delete<T>(endpoint: string, queryParams?: any) {
+        let uri = this.resolveUri( endpoint, queryParams );
+
+        return this.http.delete<T>(uri);
+    }
+
     private resolveUri(base: string, queryParams?: any): string {
         let uri = base;
 
