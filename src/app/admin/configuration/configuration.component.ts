@@ -45,11 +45,12 @@ export class ConfigurationComponent implements OnInit {
       console.log( response );
       
       this.currentEditedConfiguration = null;
+      this.getConfigurationPage();
     });
   }
 
   editValue(conf: Configuration){
-    this.currentEditedConfiguration = conf;
+    this.currentEditedConfiguration = JSON.parse(JSON.stringify(conf));
   }
 
   saveValue() {

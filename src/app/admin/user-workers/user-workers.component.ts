@@ -47,6 +47,7 @@ export class UserWorkersComponent implements OnInit {
       console.log( response );
 
       this.currentEditedUserworker = null;
+      this.getUserWorkersPage();
     });
   }
 
@@ -59,8 +60,8 @@ export class UserWorkersComponent implements OnInit {
   }
 
   editUserworker(user: UserWorker) {
-    this.currentEditedUserworker = user;
-    this.selectedCurrentUserworkerRole = user.roles[0];
+    this.currentEditedUserworker = JSON.parse(JSON.stringify(user));
+    this.selectedCurrentUserworkerRole = this.currentEditedUserworker.roles[0];
   }
 
   saveUserworker() {
