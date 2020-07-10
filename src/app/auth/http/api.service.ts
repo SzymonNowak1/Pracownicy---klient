@@ -34,7 +34,7 @@ export const ENDPOINTS = {
 
     'API_USERWORKERS': `${apiUrl}/api/userworkers`,
     'API_USERWORKERS_SEARCHTEXT': `${apiUrl}/api/userworkers/searchtext`,
-    'API_USERWORKERS_USERID': `${apiUrl}/api/userworkes/{userId}`,
+    'API_USERWORKERS_USERID': `${apiUrl}/api/userworkers/{userId}`,
 
     'API_WORKERS': `${apiUrl}/api/workers`,
     'API_WORKERS_SEARCHTEXT': `${apiUrl}/api/workers/searchtext`,

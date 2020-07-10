@@ -22,13 +22,13 @@
       <td *ngIf="user.workerId"> {{user.firstName}} {{user.lastName}}  </td>
       <td *ngIf="!user.workerId"> Nie przypisano </td>
       <td> {{user.roles}} </td>
-      <td class="controlTd"(click)="settingsOpen()">
+      <td class="controlTd"(click)="editUserworker(user)">
       </td> 
     </tr>
   
   </table>
   
-  <div id="sForm" class="sForm sFormPadding">
+  <!-- <div id="sForm" class="sForm sFormPadding">
           <span (click)="close()" class="button close"><img src="https://i.imgur.com/nnzONel.png" alt="X"  class=""/></span>
           <h2 class="title">Add a New Record</h2>  
       </div>
@@ -50,8 +50,18 @@
             <td class="controlTd"(click)="settingsOpen()"></td>
           </tr>
         </table>
-      </div>
+  </div> -->
 
   <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
 
   <app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>
+
+<div *ngIf="currentEditedUserworker">
+  <input [(ngModel)]="currentEditedUserworker.username">
+  <input [(ngModel)]="currentEditedUserworker.email">
+  <input [(ngModel)]="currentEditedUserworker.workerId">
+  <select [(ngModel)]="selectedCurrentUserworkerRole">
+    <option [ngValue]="opt" *ngFor="let opt of availableRoles">{{opt}}</option>
+  </select>
+  <button (click)="saveUserworker()"> Zapisz </button>
+</div>

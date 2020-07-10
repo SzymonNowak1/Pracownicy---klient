@@ -50,6 +50,14 @@ export class UserWorker {
     phoneNumber: string;
 }
 
+export class UserWorkerUpdate {
+    userId: number;
+    username: string;
+    role: string;
+    email: string;
+    workerId: number;
+}
+
 export class Configuration {
     id: number;
     name: string;
