@@ -1,7 +1,21 @@
 <div>
-<a href="javascript:;" (click)="first()"> &lt;&lt; </a>
-<a href="javascript:;" (click)="prev()"> &lt; </a>
-{{page}} / {{totalPages}}
-<a href="javascript:;" (click)="next()"> &gt; </a>
-<a href="javascript:;" (click)="last()"> &gt;&gt; </a> 
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="javascript:;" (click)="prev()">First</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="javascript:;" (click)="prev()">Previous</a>
+      </li>
+      <li class="page-item disabled"><a class="page-link" href="#">{{page}}</a></li>
+      <li class="page-item disabled"><a class="page-link" href="#">{{totalPages}}</a></li>
+      <li class="page-item">
+        <a class="page-link" href="javascript:;" (click)="next()">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="javascript:;" (click)="last()">Last</a>
+      </li>
+    </ul>
+  </nav>
+
 </div>

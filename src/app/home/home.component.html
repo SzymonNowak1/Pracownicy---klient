@@ -1,7 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="menuNav">
     <a class="navbar-brand" (click)="openNav()">Menu</a>
     <a class="navbar-brand">Strona główna</a>
-    <a class="navbar-brand">{{userObject.username}} </a>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link welcome" >Welcome {{userObject.username}}</a>
+            </li>
+        </ul>
+    </div>
         <div id="mySidenav" class="sidenav">
             <a class="closebtn" (click)="closeNav()">&times;</a>
             <a *ngIf="admin"  routerLink="/configuration">Konfiguracja</a>
@@ -20,8 +26,8 @@
             <a *ngIf="user" routerLink="/manage"> Moje urlopy</a>
             <a *ngIf="user" routerLink="/salarytargets">Cele wypłat</a>
             <a *ngIf="manager" routerLink="/manage"> Urlopy pracowników</a>
-            <a href="#">Chat</a>
-            <a href="#" (click)="logout()">Wyloguj </a>
+            <a>Chat</a>
+            <a (click)="logout()">Wyloguj </a>
         </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
