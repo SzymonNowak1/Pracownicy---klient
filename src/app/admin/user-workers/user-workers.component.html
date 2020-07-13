@@ -1,6 +1,6 @@
  <app-home></app-home>
 
- <app-table [title]="'UŻYTKOWNICY'" [addButton]="false" (addClicked)="panel = true" ></app-table>
+ <app-table [title]="'UŻYTKOWNICY'" [addButton]="false"></app-table>
 
 <table class="flatTable">
     <tr class="headingTr">
@@ -24,27 +24,17 @@
     </tr>
   
   </table>
-  
-  <app-panel [title]="'Add a New Record'" [isOpen]="panel" (closeClicked)="panel = false">
-    <p>Ng content works!</p>
-  </app-panel>
-
- 
-  <!-- <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'> -->
 
   <app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>
 
-<div [style.z-index]="1" *ngIf="currentEditedUserworker" id="popup1" class="overlay">
-  <div class="popup">
-    <a class="close" href="#">&times;</a>
-      <div class="content">
-        <input [(ngModel)]="currentEditedUserworker.username">
-        <input [(ngModel)]="currentEditedUserworker.email">
-        <input [(ngModel)]="currentEditedUserworker.workerId">
-        <select [(ngModel)]="selectedCurrentUserworkerRole">
-          <option [ngValue]="opt" *ngFor="let opt of availableRoles">{{opt}}</option>
-        </select>
-        <button (click)="saveUserworker()"> Zapisz </button>
-      </div>
-  </div>
-</div>
+  <app-modify [isOpen]="currentEditedUserworker" [title]="'Modyfikuj użytkownika'">
+    <div *ngIf="currentEditedUserworker">
+      <input [(ngModel)]="currentEditedUserworker.username">
+       <input [(ngModel)]="currentEditedUserworker.email">
+       <input [(ngModel)]="currentEditedUserworker.workerId">
+      <select [(ngModel)]="selectedCurrentUserworkerRole">
+        <option [ngValue]="opt" *ngFor="let opt of availableRoles">{{opt}}</option>
+      </select>
+      <button (click)="saveUserworker()"> Zapisz </button> 
+    </div>
+  </app-modify>

@@ -24,7 +24,9 @@
 
 <app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>
 
-<div *ngIf="currentEditedConfiguration">
-  <input [(ngModel)]="currentEditedConfiguration.value">
-  <button (click)="saveValue()"> Zapisz </button>
-</div>
+<app-modify [isOpen]="currentEditedConfiguration" [title]="'Ustaw wartość parametru'" >
+  <div *ngIf="currentEditedConfiguration">
+      <input [(ngModel)]="currentEditedConfiguration.value">
+      <button (click)="saveValue()"> Zapisz </button>
+  </div>
+</app-modify>

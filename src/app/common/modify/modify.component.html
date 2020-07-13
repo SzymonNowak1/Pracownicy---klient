@@ -1,0 +1,11 @@
+<div id="overlayed2"></div>
+
+<div [style.z-index]="2" *ngIf="isOpen" id="popup1" class="overlay">
+    <div class="popup">
+        <div class="popup-title"> {{title}} </div>
+        <button type="button" class="btn btn-danger close" (click)="close()">&times;</button>
+        <div class="content">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

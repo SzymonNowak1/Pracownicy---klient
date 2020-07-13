@@ -23,6 +23,7 @@ import { SalaryTargetsComponent } from './user/salary-targets/salary-targets.com
 import { PaginatorComponent } from './common/paginator/paginator.component';
 import { TableComponent } from './common/table/table.component';
 import { PanelComponent } from './common/panel/panel.component';
+import { ModifyComponent } from './common/modify/modify.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PanelComponent } from './common/panel/panel.component';
     SalaryTargetsComponent,
     PaginatorComponent,
     TableComponent,
-    PanelComponent
+    PanelComponent,
+    ModifyComponent
   ],
   imports: [
     BrowserModule,
