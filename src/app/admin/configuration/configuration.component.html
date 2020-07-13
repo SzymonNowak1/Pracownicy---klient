@@ -1,10 +1,8 @@
 <app-home></app-home>
-<table class="flatTable">
-    <tr class="titleTr">
-      <td class="titleTd">AVAILABLE WORKERS</td>
-      <td colspan="4"></td>
-      <td class="plusTd button" (click)="open()"></td>
-    </tr>
+
+<app-table [title]="'KONFIGURACJA'" [addButton]="false"></app-table>
+
+    <table class="flatTable">
     <tr class="headingTr">
       <td>ID</td>
       <td>NAME</td>

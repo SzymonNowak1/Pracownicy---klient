@@ -13,6 +13,8 @@ export class SalaryTargetsComponent implements OnInit {
 
   salaryTargets: SalaryTarget[];
 
+  panel = false;
+
   ngOnInit(): void {
     this.api.get<SalaryTarget[]>(ENDPOINTS.API_SALARYTARGETS_MYSALARYTARGETS ).subscribe( response => {
       console.log( response );

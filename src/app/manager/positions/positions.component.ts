@@ -19,6 +19,8 @@ export class PositionsComponent implements OnInit {
 
   positions: Position[];
 
+  panel = false;
+
   ngOnInit(): void {
     this.getPositionsPage();
   }

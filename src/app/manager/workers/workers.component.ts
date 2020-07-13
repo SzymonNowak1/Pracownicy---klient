@@ -19,6 +19,8 @@ export class WorkersComponent implements OnInit {
 
   workers: Worker[];
 
+  panel = false;
+
   ngOnInit(): void {
     this.getWorkersPage();
   }

@@ -24,7 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
             ],
             "scripts": []
           },

@@ -21,6 +21,8 @@ import { SalariesComponent } from './manager/salaries/salaries.component';
 import { MySalariesComponent } from './user/my-salaries/my-salaries.component';
 import { SalaryTargetsComponent } from './user/salary-targets/salary-targets.component';
 import { PaginatorComponent } from './common/paginator/paginator.component';
+import { TableComponent } from './common/table/table.component';
+import { PanelComponent } from './common/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { PaginatorComponent } from './common/paginator/paginator.component';
     SalariesComponent,
     MySalariesComponent,
     SalaryTargetsComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    TableComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,

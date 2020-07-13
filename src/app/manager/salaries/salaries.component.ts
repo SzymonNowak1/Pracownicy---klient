@@ -19,6 +19,8 @@ export class SalariesComponent implements OnInit {
 
   salaries: Salary[];
 
+  panel = false;
+
   ngOnInit(): void {
     this.getSalariesPage();
   }

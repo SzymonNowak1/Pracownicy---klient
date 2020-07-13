@@ -1,0 +1,5 @@
+<div *ngIf="isOpen" id="sForm" class="sForm sFormPadding">
+    <span (click)="close()" class="button close"><img src="https://i.imgur.com/nnzONel.png" alt="X"  class=""/></span>
+    <h3 class="title">{{title}}</h3>  
+    <ng-content></ng-content>
+</div>

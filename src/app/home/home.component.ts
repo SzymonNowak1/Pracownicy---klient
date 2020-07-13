@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   userObject: User;
 
   ngOnInit(): void {
+    document.getElementById("overlayed").style.display = "none";
+    // document.body.style.backgroundColor = "white";
 
     this.userObject = this.authenticationService.currentUserValue;
     let roles = this.userObject.roles;
@@ -33,13 +35,17 @@ export class HomeComponent implements OnInit {
     location.reload();
   }
   openNav() {
+      document.getElementById("overlayed").style.display = "block";
+
       document.getElementById("mySidenav").style.width = "250px";
-      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+      // document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
   }
     
   closeNav() {
+      document.getElementById("overlayed").style.display = "none";
+
       document.getElementById("mySidenav").style.width = "0";
-      document.body.style.backgroundColor = "white";
+      // document.body.style.backgroundColor = "white";
   }
 
 
