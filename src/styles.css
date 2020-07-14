@@ -167,7 +167,9 @@
   z-index: 1000;
 }
 
-.paginator-hide {
+.paginator-hide0 {
   position: relative;
+  width: 100%;
+  height: 100%;
   z-index: -10000;
 }

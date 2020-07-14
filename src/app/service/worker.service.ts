@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService, ENDPOINTS } from '../auth/http/api.service';
 import { Observable } from '../../../node_modules/rxjs';
-import { Page, WorkerUpdate } from '../model/models';
+import { Page, WorkerUpdate, Worker } from '../model/models';
 import { tap } from '../../../node_modules/rxjs/operators';
 
 @Injectable({

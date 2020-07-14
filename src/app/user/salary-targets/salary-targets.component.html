@@ -15,13 +15,26 @@
       <td> {{salarytarget.id}} </td>
       <td> {{salarytarget.name}} </td>
       <td> {{salarytarget.bankAccount}} </td>
-      <td> {{salarytarget.selected}} </td>
-      <td class="controlTd"(click)="settingsOpen()">
+      <td *ngIf="salarytarget.selected"> Wybrany </td>
+      <td *ngIf="!salarytarget.selected"> <a href="javascript:;" (click)="selectSalaryTarget(salarytarget.id)"> Wybierz</a> </td>
+      <td class="controlTd"(click)="editSalaryTarget(salarytarget)">
       </td> 
     </tr>
   
     <app-panel [title]="'Dodaj cel wypłaty'" [isOpen]="panel" (closeClicked)="panel = false">
-        <p>Dodawanie celu działa</p>
+      <label>Nazwa</label>  
+      <input [(ngModel)]="newSalaryTarget.name">
+      <label>Opis</label>
+      <input [(ngModel)]="newSalaryTarget.bankAccount">
+        <button (click)="createSalaryTarget()"> Zapisz </button> 
     </app-panel>
+
+    <app-modify [isOpen]="currentEditedSalaryTarget" [title]="'Modyfikuj cel wypłaty'">
+      <div *ngIf="currentEditedSalaryTarget">
+          <input [(ngModel)]="currentEditedSalaryTarget.name">
+          <input [(ngModel)]="currentEditedSalaryTarget.bankAccount">
+          <button (click)="saveSalaryTarget()"> Zapisz </button>
+      </div>
+    </app-modify>
 
   </table>

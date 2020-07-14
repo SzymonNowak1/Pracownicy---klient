@@ -31,10 +31,10 @@ export class Worker {
 export class WorkerUpdate {
     firstName: string;
     lastName: string;
-    birthday: string;
+    birthday: string  = '2020-07-14';
     address: string;
     phoneNumber: string;
-    positionIds: number[];
+    positionIds: number[] = [];
 }
 
 export class UserWorker {

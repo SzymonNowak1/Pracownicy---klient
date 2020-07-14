@@ -14,14 +14,32 @@
       <td> {{worker.firstName}} </td>
       <td> {{worker.lastName}} </td>
       <td> {{worker.positionIds}} </td>
-      <td class="controlTd"(click)="settingsOpen()">
+      <td class="controlTd"(click)="editWorker(worker)">
       </td> 
     </tr>
   
   </table>
   
   <app-panel [title]="'Dodaj pracownika'" [isOpen]="panel" (closeClicked)="panel = false">
-      <p>Dodaj pracownika</p>
+    <label>Imię</label>
+    <input [(ngModel)]="newWorker.firstName">
+    <label>Nazwisko</label>
+    <input [(ngModel)]="newWorker.lastName">
+    <label>Adres</label>
+    <input [(ngModel)]="newWorker.address">
+    <label>Numer telefonu</label>
+    <input [(ngModel)]="newWorker.phoneNumber">
+    <button (click)="createWorker()"> Zapisz </button> 
   </app-panel>
+
+  <app-modify [isOpen]="currentEditedWorker" [title]="'Modyfikuj pracownika'">
+      <div *ngIf="currentEditedWorker">
+        <input [(ngModel)]="currentEditedWorker.firstName">
+        <input [(ngModel)]="currentEditedWorker.lastName">
+        <input [(ngModel)]="currentEditedWorker.address">
+        <input [(ngModel)]="currentEditedWorker.phoneNumber">
+        <button (click)="saveWorker()">Zapisz</button>
+      </div>
+    </app-modify>
 
   <app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>

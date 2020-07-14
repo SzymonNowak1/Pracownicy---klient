@@ -44,14 +44,14 @@ export class PositionsComponent implements OnInit {
     });
   }
 
-  putPosition(id: string, update: PositionUpdate) {
+  updatePosition(id: string, update: PositionUpdate) {
     this.service.update( id, update).subscribe( response => {
       this.currentEditedPosition = null;
       this.getPositionsPage();
     });
   }
 
-  addPosition() {
+  createPosition() {
     this.service.create(this.newPosition).subscribe( response => {
       this.getPositionsPage();
     });
@@ -67,7 +67,7 @@ export class PositionsComponent implements OnInit {
     update.description = this.currentEditedPosition.description;
     update.base = this.currentEditedPosition.base;
 
-    this.putPosition('' + this.currentEditedPosition.id, update);
+    this.updatePosition('' + this.currentEditedPosition.id, update);
   }
 
 }

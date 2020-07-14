@@ -33,7 +33,7 @@ export class SalaryTargetService {
   }
 
   select(id: string) {
-    return this.api.put<SalaryTarget>(ENDPOINTS.API_SALARYTARGETS_ID_SELECT, {} ).pipe(
+    return this.api.put<SalaryTarget>(ENDPOINTS.API_SALARYTARGETS_ID_SELECT, {id: id} ).pipe(
       tap( response => {
         console.log( response );
     }));
