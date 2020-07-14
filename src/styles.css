@@ -166,3 +166,8 @@
 .tops {
   z-index: 1000;
 }
+
+.paginator-hide {
+  position: relative;
+  z-index: -10000;
+}

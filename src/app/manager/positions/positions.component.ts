@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService, ENDPOINTS } from 'src/app/auth/http/api.service';
-import { Page } from 'src/app/model/models';
+import { Page, PositionUpdate, Position } from 'src/app/model/models';
 import { DEFAULT_PER_PAGE } from '../../const';
 import { PageEvent } from '../../common/page-event';
+import { PositionService } from '../../service/position.service';
 
 @Component({
   selector: 'app-positions',
@@ -11,7 +12,7 @@ import { PageEvent } from '../../common/page-event';
 })
 export class PositionsComponent implements OnInit {
 
-  constructor( private api: ApiService ) { }
+  constructor( private service: PositionService ) { }
 
   perPage = DEFAULT_PER_PAGE;
   page = 1;
@@ -20,6 +21,10 @@ export class PositionsComponent implements OnInit {
   positions: Position[];
 
   panel = false;
+
+  newPosition: PositionUpdate = new PositionUpdate();
+  currentEditedPosition: Position;
+
 
   ngOnInit(): void {
     this.getPositionsPage();
@@ -33,15 +38,36 @@ export class PositionsComponent implements OnInit {
   }
 
   getPositionsPage() {
-    this.api.get<Page<Position>>(ENDPOINTS.API_POSITIONS, { perPage: this.perPage, page: this.page - 1} ).subscribe( response => {
-      console.log( response );
+    this.service.getPage( this.perPage, this.page - 1 ).subscribe( response => {
       this.positions = response.elements;
       this.totalPages = response.totalPages;
     });
   }
 
-  settingsOpen(){}
+  putPosition(id: string, update: PositionUpdate) {
+    this.service.update( id, update).subscribe( response => {
+      this.currentEditedPosition = null;
+      this.getPositionsPage();
+    });
+  }
 
-  open() {}
+  addPosition() {
+    this.service.create(this.newPosition).subscribe( response => {
+      this.getPositionsPage();
+    });
+  }
+
+  editPosition(position: Position) {
+    this.currentEditedPosition = JSON.parse(JSON.stringify(position));
+  }
+
+  savePosition() {
+    const update: PositionUpdate = new PositionUpdate();
+    update.name = this.currentEditedPosition.name;
+    update.description = this.currentEditedPosition.description;
+    update.base = this.currentEditedPosition.base;
+
+    this.putPosition('' + this.currentEditedPosition.id, update);
+  }
 
 }

@@ -3,6 +3,7 @@ import { ApiService, ENDPOINTS } from 'src/app/auth/http/api.service';
 import { Configuration, Page, ConfigurationUpdate } from 'src/app/model/models';
 import { PageEvent } from '../../common/page-event';
 import { DEFAULT_PER_PAGE } from '../../const';
+import { ConfigurationService } from '../../service/configuration.service';
 
 @Component({
   selector: 'app-configuration',
@@ -11,7 +12,7 @@ import { DEFAULT_PER_PAGE } from '../../const';
 })
 export class ConfigurationComponent implements OnInit {
 
-  constructor( private api: ApiService ) { }
+  constructor( private service: ConfigurationService ) { }
 
   perPage = DEFAULT_PER_PAGE;
   page = 1;
@@ -33,17 +34,14 @@ export class ConfigurationComponent implements OnInit {
   }
 
   getConfigurationPage() {
-    this.api.get<Page<Configuration>>(ENDPOINTS.API_CONFIGURATION, { perPage: this.perPage, page: this.page - 1} ).subscribe( response => {
-      console.log( response );
+    this.service.getPage(this.perPage, this.page - 1).subscribe( response => {
       this.configurations = response.elements;
       this.totalPages = response.totalPages;
     });
   }
 
   putConfiguration(name: string, update: ConfigurationUpdate) {
-    this.api.put<Configuration>(ENDPOINTS.API_CONFIGURATION_NAME, { name: name }, update ).subscribe( response => {
-      console.log( response );
-      
+    this.service.update(name, update).subscribe( response => {
       this.currentEditedConfiguration = null;
       this.getConfigurationPage();
     });

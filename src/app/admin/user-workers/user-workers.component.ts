@@ -3,6 +3,7 @@ import { ENDPOINTS, ApiService } from 'src/app/auth/http/api.service';
 import { Page, UserWorker, UserWorkerUpdate } from 'src/app/model/models';
 import { PageEvent } from '../../common/page-event';
 import { DEFAULT_PER_PAGE, APPLICATION_ROLES } from '../../const';
+import { UserWorkerService } from '../../service/user-worker.service';
 
 @Component({
   selector: 'app-user-workers',
@@ -10,7 +11,7 @@ import { DEFAULT_PER_PAGE, APPLICATION_ROLES } from '../../const';
   styleUrls: ['./user-workers.component.css']
 })
 export class UserWorkersComponent implements OnInit {
-  constructor( private api: ApiService) { }
+  constructor( private service: UserWorkerService) { }
 
   perPage = DEFAULT_PER_PAGE;
   page = 1;
@@ -34,8 +35,7 @@ export class UserWorkersComponent implements OnInit {
   }
 
   getUserWorkersPage() {
-    this.api.get<Page<UserWorker>>(ENDPOINTS.API_USERWORKERS, { perPage: this.perPage, page: this.page - 1} ).subscribe( response => {
-      console.log( response );
+    this.service.getPage(this.perPage, this.page - 1 ).subscribe( response => {
       this.userworkers = response.elements;
       this.totalPages = response.totalPages;
       this.normalizeRoles();
@@ -43,9 +43,7 @@ export class UserWorkersComponent implements OnInit {
   }
 
   putUserworker(id: string, update: UserWorkerUpdate) {
-    this.api.put<UserWorker>(ENDPOINTS.API_USERWORKERS_USERID, {userId: id}, update).subscribe( response => {
-      console.log( response );
-
+    this.service.update( id, update).subscribe( response => {
       this.currentEditedUserworker = null;
       this.getUserWorkersPage();
     });

@@ -16,14 +16,29 @@
       <td> {{position.name}} </td>
       <td> {{position.description}} </td>
       <td> {{position.base}} </td>
-      <td class="controlTd"(click)="settingsOpen()">
+      <td class="controlTd"(click)="editPosition(position)">
       </td> 
     </tr>
   
 </table>
 
 <app-panel [title]="'Nowe stanowisko'" [isOpen]="panel" (closeClicked)="panel = false">
-    <p>Nowe stanowisko działa!</p>
-  </app-panel>
+  <label>Nazwa</label>  
+  <input [(ngModel)]="newPosition.name">
+  <label>Opis</label>
+  <input [(ngModel)]="newPosition.description">
+  <label>Kwota bazowa</label>
+  <input [(ngModel)]="newPosition.base">
+    <button (click)="addPosition()"> Zapisz </button> 
+</app-panel>
+
+<app-modify [isOpen]="currentEditedPosition" [title]="'Modyfikuj stanowisko'">
+  <div *ngIf="currentEditedPosition">
+    <input [(ngModel)]="currentEditedPosition.name">
+    <input [(ngModel)]="currentEditedPosition.description">
+    <input [(ngModel)]="currentEditedPosition.base">
+    <button (click)="savePosition()">Zapisz</button>
+  </div>
+</app-modify>
 
 <app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>
