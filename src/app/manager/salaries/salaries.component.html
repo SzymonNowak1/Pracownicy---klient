@@ -20,14 +20,26 @@
       <td> {{salary.bonus}} </td>
       <td> {{salary.status}} </td>
       <td> {{salary.taxTotal}} </td>
-      <td class="controlTd"(click)="settingsOpen()">
+      <td class="controlTd"(click)="editSalary(salary)">
       </td> 
     </tr>
   
   </table>
 
   <app-panel [title]="'Dodaj wypłatę'" [isOpen]="panel" (closeClicked)="panel = false">
-      <p>Wypłata działa</p>
-    </app-panel>
+    <label>SalaryTarget ID</label>  
+    <input [(ngModel)]="newSalary.salaryTargetId">
+    <label>Bonus</label>
+    <input [(ngModel)]="newSalary.bonus">
+    <button (click)="createSalary()"> Zapisz </button> 
+  </app-panel>
+
+  <app-modify [isOpen]="currentEditedSalary" [title]="'Modyfikuj wypłatę'">
+    <div *ngIf="currentEditedSalary">
+      <input [(ngModel)]="currentEditedSalary.salaryTargetId">
+      <input [(ngModel)]="currentEditedSalary.bonus">
+      <button (click)="saveSalary()">Zapisz</button>
+    </div>
+  </app-modify>
 
   <app-paginator [perPage]="perPage" [totalPages]="totalPages" (changed)="pageChanged($event)"></app-paginator>

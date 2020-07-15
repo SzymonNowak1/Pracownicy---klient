@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Salary } from 'src/app/model/models';
 import { ApiService, ENDPOINTS } from '../../auth/http/api.service';
+import { SalaryService } from '../../service/salary.service';
 
 @Component({
   selector: 'app-my-salaries',
@@ -9,19 +10,19 @@ import { ApiService, ENDPOINTS } from '../../auth/http/api.service';
 })
 export class MySalariesComponent implements OnInit {
 
-  constructor( private api: ApiService ) { }
+  constructor( private service: SalaryService ) { }
 
   salaries: Salary[];
-
+ 
   ngOnInit(): void {
-    this.api.get<Salary[]>( ENDPOINTS.API_SALARIES_MYSALARIES ).subscribe( response => {
-      console.log( response );
+    this.getUserSalaries();
+  }
+
+  getUserSalaries() {
+    this.service.getUsersAll().subscribe( response => {
       this.salaries = response;
     });
   }
 
-  settingsOpen(){}
-
-  open() {}
 
 }

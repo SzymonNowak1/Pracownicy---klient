@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Salary, Page } from 'src/app/model/models';
+import { Salary, Page, SalaryUpdate } from 'src/app/model/models';
 import { ApiService, ENDPOINTS } from 'src/app/auth/http/api.service';
 import { DEFAULT_PER_PAGE } from '../../const';
 import { PageEvent } from '../../common/page-event';
+import { SalaryService } from '../../service/salary.service';
 
 @Component({
   selector: 'app-salaries',
@@ -11,7 +12,7 @@ import { PageEvent } from '../../common/page-event';
 })
 export class SalariesComponent implements OnInit {
 
-  constructor( private api: ApiService ) { }
+  constructor( private service: SalaryService ) { }
 
   perPage = DEFAULT_PER_PAGE;
   page = 1;
@@ -20,6 +21,9 @@ export class SalariesComponent implements OnInit {
   salaries: Salary[];
 
   panel = false;
+
+  newSalary: SalaryUpdate = new SalaryUpdate();
+  currentEditedSalary: Salary;
 
   ngOnInit(): void {
     this.getSalariesPage();
@@ -33,14 +37,36 @@ export class SalariesComponent implements OnInit {
   }
 
   getSalariesPage() {
-    this.api.get<Page<Salary>>(ENDPOINTS.API_SALARIES, { perPage: this.perPage, page: this.page - 1} ).subscribe( response => {
-      console.log( response );
+    this.service.getPage( this.perPage, this.page - 1 ).subscribe( response => {
       this.salaries = response.elements;
       this.totalPages = response.totalPages;
     });
   }
 
-  settingsOpen(){}
+  updateSalary(id: string, update: SalaryUpdate) {
+    this.service.update( id, update).subscribe( response => {
+      this.currentEditedSalary = null;
+      this.getSalariesPage();
+    });
+  }
 
-  open() {}
+  createSalary() {
+    this.service.create(this.newSalary).subscribe( response => {
+      this.getSalariesPage();
+    });
+  }
+
+  editSalary(salary: Salary) {
+    this.currentEditedSalary = JSON.parse(JSON.stringify(salary));
+  }
+
+  saveSalary() {
+    const update: SalaryUpdate = new SalaryUpdate();
+    update.bonus = this.currentEditedSalary.bonus;
+    update.date = this.currentEditedSalary.date;
+    update.salaryTargetId = this.currentEditedSalary.salaryTargetId;
+
+    this.updateSalary('' + this.currentEditedSalary.id, update);
+  }
+
 }
